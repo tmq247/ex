@@ -1,7 +1,7 @@
 from SpamX.config import *
 from pyrogram import Client
 
-"""Starting all clients"""
+"""Bắt đầu tất cả khách hàng"""
    
 if  ":" in CLIENT:
    RiZoeL = Client('SpamX', api_id=API_ID, api_hash=API_HASH, bot_token=CLIENT, plugins=dict(root="SpamX.modules.for_bot"))
