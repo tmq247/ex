@@ -25,12 +25,12 @@ async def dmraid(SpamX: Client, message: Message):
           return
         hm = Rizoel[1]
         if not hm:
-          await message.reply_text("you need to specify an user! Reply to any user or gime id/username")
+          await message.reply_text("bạn cần chỉ định một người dùng! Trả lời bất kỳ người dùng nào hoặc gime id/username")
           return
         try:
            user = await SpamX.get_users(Rizoel[1])
         except:
-           await message.reply_text("**Error:** User not found!")
+           await message.reply_text("**Lỗi:** Không tìm thấy người dùng!")
            return
       elif message.reply_to_message:
         counts = int(Rizoel[0])
@@ -43,19 +43,19 @@ async def dmraid(SpamX: Client, message: Message):
         return
 
       if int(user.id) == Owner:
-         await message.reply_text("This guy is owner of these Bots.")
+         await message.reply_text("Anh chàng này là chủ sở hữu của những Bot này.")
          return
       if int(user.id) in Sudos:
          if message.from_user.id != Owner:
-           await message.reply_text("This guy is a sudo users.")
+           await message.reply_text("Anh chàng này là người dùng sudo.")
            return
       
-      await message.reply_text("🔸 DM raid started 🔸")
+      await message.reply_text("🔸 DM Cuộc đột kích bắt đầu 🔸")
       await start_dm_raid(SpamX, message, counts, user.id)
          
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"Started DM Raid By User: {message.from_user.mention} \n\n On User: {user.id} \n Counts: {counts}")
+            await SpamX.send_message(LOGS_CHANNEL, f"DM Đã bắt đầu cuộc tấn công theo người dùng: {message.from_user.mention} \n\n Trên người dùng: {user.id} \n Counts: {counts}")
          except Exception as a:
              print(a)
              pass
@@ -68,12 +68,12 @@ async def dm(SpamX: Client, message: Message):
       if len(Rizoel) == 2:
         hm = Rizoel[0]
         if not hm:
-          await message.reply_text("you need to specify an user! Reply to any user or gime id/username")
+          await message.reply_text("bạn cần chỉ định một người dùng! Trả lời bất kỳ người dùng nào hoặc gime id/username")
           return
         try:
            user = await SpamX.get_users(Rizoel[0])
         except:
-           await message.reply_text("**Error:** User not found!")
+           await message.reply_text("**Lỗi:** Không tìm thấy người dùng!")
            return
         dm_msg = str(Rizoel[1])
         if not dm_msg:
@@ -92,18 +92,18 @@ async def dm(SpamX: Client, message: Message):
         return
 
       if int(user.id) == Owner:
-         await message.reply_text("This guy is owner of these Bots.")
+         await message.reply_text("Anh chàng này là chủ sở hữu của những Bot này.")
          return
       if int(user.id) in Sudos:
          if message.from_user.id != Owner:
-           await message.reply_text("This guy is a sudo users.")
+           await message.reply_text("Anh chàng này là người dùng sudo.")
            return
 
       await SpamX.send_message(user.id, dm_msg)
-      await message.reply_text("🔸 Message Delivered 🔸")
+      await message.reply_text("🔸 Tin nhắn đã gửi 🔸")
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"Direct Message By User: {message.from_user.id} \n\n On User: {id}")
+            await SpamX.send_message(LOGS_CHANNEL, f"Tin nhắn trực tiếp của người dùng: {message.from_user.id} \n\n Trên người dùng: {id}")
          except Exception as a:
              print(a)
              pass
@@ -119,17 +119,17 @@ async def dmspam(SpamX: Client, message: Message):
           ok = await SpamX.get_users(Rizoel[0])
           id = ok.id
           if int(id) in Devs:
-                text = f"I can't raid on @RiZoeLX's Owner"
+                text = f"Tôi không thể tấn công Chủ sở hữu @coihaycoc"
                 await message.reply_text(text)
           elif int(id) == Owner:
-                text = f"This guy is The Owner Of these Bots."
+                text = f"Anh chàng này là chủ sở hữu của những Bot này."
                 await message.reply_text(text)
           elif int(id) in Sudos:
              if message.from_user.id != Owner:
-               await message.reply_text("This guy is a sudo users.")
+               await message.reply_text("Anh chàng này là người dùng sudo.")
           else:
               counts = int(Rizoelop[0])
-              await message.reply_text("☢️ Dm Spam Started ☢️")
+              await message.reply_text("☢️ Dm Thư rác đã bắt đầu ☢️")
               await start_dm_spam(SpamX, counts, id, msg)
               
       elif message.reply_to_message:
@@ -137,15 +137,15 @@ async def dmspam(SpamX: Client, message: Message):
           ok = await SpamX.get_users(user_id)
           id = ok.id
           if int(id) == Owner:
-                text = f"This guy is the Owner Of these Bots."
+                text = f"Anh chàng này là chủ sở hữu của những Bot này."
                 await message.reply_text(text)
           elif int(id) in Sudos:
              if message.from_user.id != Owner:
-                await message.reply_text("This guy is a sudo users.")
+                await message.reply_text("Anh chàng này là người dùng sudo.")
           else:
               counts = int(Rizoel[0])
               msg = str(Rizoelop[0])
-              await message.reply_text("☢️ Dm Spam Started ☢️")
+              await message.reply_text("☢️ Dm Thư rác đã bắt đầu ☢️")
               await start_dm_spam(SpamX, counts, id, msg)
               
       else:
@@ -153,7 +153,7 @@ async def dmspam(SpamX: Client, message: Message):
           return
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"started DM Spam By User: {message.from_user.id} \n\n On User: {id} \n Counts: {counts} \n Message: {msg}")
+            await SpamX.send_message(LOGS_CHANNEL, f"DM đã bắt đầu Thư rác theo người dùng: {message.from_user.id} \n\n Trên người dùng: {id} \n Counts: {counts} \n Tin nhắn: {msg}")
          except Exception as a:
              print(a)
              pass
