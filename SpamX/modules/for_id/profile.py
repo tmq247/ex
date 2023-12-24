@@ -21,11 +21,11 @@ async def setpic(SpamX: Client, e: Message):
      if (replied and replied.media and (replied.photo or (replied.document and "image" in replied.document.mime_type))):
             await SpamX.download_media(message=replied, file_name=Media)
             await SpamX.set_profile_photo(photo=Media)
-            await e.reply_text(f"**Changed profile picture successfully** ✅")
+            await e.reply_text(f"**Đã thay đổi ảnh hồ sơ thành công** ✅")
             if os.path.exists(Media):
                os.remove(Media)
      else:
-         await e.reply_text("Reply To any Photo To Change Profile pic")
+         await e.reply_text("Trả lời bất kỳ ảnh nào để thay đổi ảnh hồ sơ")
       
 etc_bio = "ᴜsᴇʀ ᴏғ ʀɪᴢᴏᴇʟ x"
 
@@ -38,13 +38,13 @@ async def setname(SpamX: Client, e: Message):
      elif Rizoel:
         name = str(Rizoel[0])
      else:
-        await e.reply_text(f"Wrong usage! \n syntax: {handler}setname (name)")
+        await e.reply_text(f"Sử dụng sai! \n cú pháp: {handler}setname (tên)")
         return
      try:
         await SpamX.update_profile(first_name=name, bio=etc_bio)
-        await e.reply_text(f"**Profile Name Changed Successfully !!** \n\n **New Name:** {name}")
+        await e.reply_text(f"**Tên hồ sơ đã được thay đổi thành công !!** \n\n **Tên mới:** {name}")
      except Exception as ex:
-        await e.reply_text(f"**Error !!** \n\n {ex}")
+        await e.reply_text(f"**Lỗi !!** \n\n {ex}")
         print(ex)
      
 @Client.on_message(filters.user(Owner) & filters.command(["setbio"], prefixes=handler))
@@ -56,15 +56,15 @@ async def setbio(SpamX: Client, e: Message):
       elif Rizoel:
         xd = str(Rizoel[0])
       else:
-        await e.reply_text(f"Wrong usage! \n syntax: {handler}setbio (bio)")
+        await e.reply_text(f"Sử dụng sai! \n cú pháp: {handler}setbio (bio)")
         return
       ok = await SpamX.get_me()
       nam = ok.first_name
       nam2 = ok.last_name
       try:
          await SpamX.update_profile(first_name=nam, last_name=nam2, bio=xd)
-         await e.reply_text(f"**Profile Bio Changed Successfully !** \n\n **New Bio**: {xd}")
+         await e.reply_text(f"**Tiểu sử hồ sơ đã được thay đổi thành công !** \n\n ** Bio mới**: {xd}")
       except Exception as ex:
-         await e.reply_text(f"**Error !!** \n\n {ex}")
+         await e.reply_text(f"**Lỗi !!** \n\n {ex}")
          print(ex)
       
