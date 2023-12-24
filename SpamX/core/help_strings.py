@@ -23,12 +23,12 @@ spam_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}spam [counts] [message] 
-•) {hndlr}delayspam [độ trễ tính bằng giây.] [Counts] [message]
-•) {hndlr}pornspam [counts]
-•) {hndlr}hange [counts]
-•) {hndlr}uspam [message]
-•) {hndlr}abuse [counts or leave]
+•) {hndlr}spam [số lần] [tin nhắn] 
+•) {hndlr}delayspam [độ trễ tính bằng giây.] [số lần] [tin nhắn]
+•) {hndlr}pornspam [số lần]
+•) {hndlr}hange [số lần]
+•) {hndlr}uspam [tin nhắn]
+•) {hndlr}abuse [số lần hoặc leave]
 """
 
 raid_text = f"""
@@ -36,10 +36,10 @@ raid_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}raid [counts] [username or reply to user]
-•) {hndlr}uraid [Username or reply to user]
-•) {hndlr}replyraid [username or reply to user]
-•) {hndlr}dreplyraid [username or reply to user]
+•) {hndlr}raid [số lần] [tên người dùng hoặc trả lời người dùng]
+•) {hndlr}uraid [Tên người dùng hoặc trả lời người dùng]
+•) {hndlr}replyraid [tên người dùng hoặc trả lời người dùng]
+•) {hndlr}dreplyraid [tên người dùng hoặc trả lời người dùng]
 """
 
 dm_text = f"""
@@ -47,9 +47,9 @@ dm_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}dm [username or reply to user] [message]
-•) {hndlr}dmspam [user] [counts] [message]
-•) {hndlr}dmraid [counts] [username or reply to user]
+•) {hndlr}dm [tên người dùng hoặc trả lời người dùng] [tin nhắn]
+•) {hndlr}dmspam [người dùng] [số lần] [tin nhắn]
+•) {hndlr}dmraid [số lần] [tên người dùng hoặc trả lời người dùng]
 """
 
 admin_text = f"""
@@ -57,13 +57,13 @@ admin_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}ban [user]
-•) {hndlr}unban [user]
-•) {hndlr}promote [user]
-•) {hndlr}demote [user]
-•) {hndlr}pin [reply to message]
-•) {hndlr}unpin [reply to message]
-•) {hndlr}purge [reply to message]
+•) {hndlr}ban [người dùng]
+•) {hndlr}unban [người dùng]
+•) {hndlr}promote [người dùng]
+•) {hndlr}demote [người dùng]
+•) {hndlr}pin [trả lời tin nhắn]
+•) {hndlr}unpin [trả lời tin nhắn]
+•) {hndlr}purge [trả lời tin nhắn]
 """
 
 core_text = f"""
@@ -71,12 +71,12 @@ core_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}report [user] [R7 ban code] [telegraph link as proof]
+•) {hndlr}report [người dùng] [R7 ban code] [telegraph link as proof]
 •) {hndlr}stats
-•) {hndlr}setvar [var name] [key value] (It may be useful)
-•) {hndlr}getvar (to get all Vars name)
-•) {hndlr}limit (to check @Spambot limit)
-•) {hndlr}telegraph [reply to Media]
+•) {hndlr}setvar [var name] [key value] (Nó có thể hữu ích)
+•) {hndlr}getvar (để có được tất cả tên Vars)
+•) {hndlr}limit (để kiểm tra giới hạn @Spambot)
+•) {hndlr}telegraph [trả lời media]
 """
 
 sudos_text = f"""
@@ -84,8 +84,8 @@ sudos_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}addsudo [user] (Fill DATABASE_URL for smooth use)
-•) {hndlr}rmsudo [user] (Fill DATABASE_URL for smooth use)
+•) {hndlr}addsudo [người dùng] (Điền vào DATABASE_URL để sử dụng suôn sẻ)
+•) {hndlr}rmsudo [người dùng] (Điền vào DATABASE_URL để sử dụng suôn sẻ)
 •) {hndlr}sudolist
 """
 
@@ -94,11 +94,11 @@ global_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}gban [user] (DATABASE_URL required in this CMD)
-•) {hndlr}ungban [user] (DATABASE_URL required in this CMD)
+•) {hndlr}gban [user] (Cần có DATABASE_URL trong CMD này)
+•) {hndlr}ungban [user] (Cần có DATABASE_URL trong CMD này)
 •) {hndlr}gbanlist
-•) {hndlr}gpromote [user]
-•) {hndlr}gdemote [user]
+•) {hndlr}gpromote [người dùng]
+•) {hndlr}gdemote [người dùng]
 """
 
 profile_text = f"""
@@ -106,11 +106,11 @@ profile_text = f"""
 
 Các lệnh có sẵn và cách dùng ⬇️
 
-•) {hndlr}setpic [reply to Media]
-•) {hndlr}setname [First name] [last name (optionsi) ]
-•) {hndlr}setbio [New bio]
-•) {hndlr}clone [user] (to clone someone's profile]
-•) {hndlr}revert (To remove clone)
+•) {hndlr}setpic [trả lời Media]
+•) {hndlr}setname [Tên] [họ (tùy chọn) ]
+•) {hndlr}setbio [Bio mới]
+•) {hndlr}clone [người dùng] (sao chép hồ sơ của ai đó]
+•) {hndlr}revert (Để loại bỏ bản sao)
 """
 
 owner_text = f"""
@@ -119,9 +119,9 @@ owner_text = f"""
 Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}eval [code]
-•) {hndlr}broadcast [message]
-•) {hndlr}msgall [message] (in groups only)
-•) {hndlr}scrape [From group] 
+•) {hndlr}broadcast [tin nhắn]
+•) {hndlr}msgall [tin nhắn] (chỉ trong nhóm)
+•) {hndlr}scrape [Từ nhóm] 
 •) {hndlr}banall
 """
 
@@ -140,8 +140,8 @@ info_text = f"""
 Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}SpamX
-•) {hndlr}info [User]
-•) {hndlr}id [user]
+•) {hndlr}info [người dùng]
+•) {hndlr}id [người dùng]
 """
 
 def check_string(text):
