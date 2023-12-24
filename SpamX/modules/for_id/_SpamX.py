@@ -75,7 +75,7 @@ async def clone_user(SpamX: Client, message: Message):
     siu = await SpamX.get_chat("me")
     if siu.bio:
        Bio = siu.bio
-    Reply = await message.reply("cloning...")
+    Reply = await message.reply("nhân bản...")
     _bio = await SpamX.get_chat(user.id)
     if _bio.bio:
        user_bio = _bio.bio
@@ -88,7 +88,7 @@ async def clone_user(SpamX: Client, message: Message):
           await SpamX.update_profile(first_name=user.first_name, last_name=user.last_name, bio=user_bio)
        else:
           await SpamX.update_profile(first_name=user.first_name, bio=user_bio)
-       await delete_reply(message, Reply, f"Now I'm {user.first_name} \n\n Note: Don't restart until you revert me!")
+       await delete_reply(message, Reply, f"Bây giờ tôi là {user.first_name} \n\n Lưu ý: Đừng khởi động lại cho đến khi bạn hoàn nguyên tôi!")
     except Exception as eror:
        await delete_reply(message, Reply, str(eror))
 
@@ -101,19 +101,19 @@ async def _revert(SpamX: Client, message: Message):
     Mai = await SpamX.get_me()
     photos = [x async for x in SpamX.get_chat_photos("me")]
     if not FName:
-       await message.reply(f"Error: You didn't cloned anyone!")
+       await message.reply(f"Lỗi: Bạn chưa nhân bản ai cả!")
        return
     user_bio = Bio
     if not user_bio:
-       user_bio = "SpamX user!"
-    Reply = await message.reply("reverting...")
+       user_bio = "XXX user!"
+    Reply = await message.reply("quay trở lại...")
     try:
        if LName:
           await SpamX.update_profile(first_name=FName, last_name=LName, bio=user_bio)
        else:
           await SpamX.update_profile(first_name=FName, bio=user_bio)
        await SpamX.delete_profile_photos(photos[0].file_id)
-       await delete_reply(message, Reply, f"I'm Back!")
+       await delete_reply(message, Reply, f"Tôi đã trở lại!")
        FName = ""
        LName = ""
        Bio = ""
@@ -126,7 +126,7 @@ r = telegraph.create_account(short_name="telegram")
 auth_url = r["auth_url"]
 
 def get_text(message: Message) -> [None, str]:
-    """Extract Text From Commands"""
+    """Trích xuất văn bản từ lệnh"""
     text_to_return = message.text
     if message.text is None:
         return None
@@ -143,14 +143,14 @@ def get_text(message: Message) -> [None, str]:
 async def _telegraph(SpamX: Client, message: Message):
     hm = await message.reply_text("`Processing . . .`")
     if not message.reply_to_message:
-        await hm.edit("**Reply to an Image or text.**")
+        await hm.edit("**Trả lời một hình ảnh hoặc văn bản.**")
         return
     if message.reply_to_message.media:
         doc = await message.reply_to_message.download()
         try:
             media_url = upload_file(doc)
         except exceptions.TelegraphException as exc:
-            await delete_reply(message, hm, f"**ERROR:** `{exc}`")
+            await delete_reply(message, hm, f"**LỖI:** `{exc}`")
             os.remove(doc)
             return
         await delete_reply(message, hm, f"**Uploaded on ** [Telegraph](https://telegra.ph/{media_url[0]})")
@@ -162,7 +162,7 @@ async def _telegraph(SpamX: Client, message: Message):
         try:
             response = telegraph.create_page(_title, html_content=_text)
         except exceptions.TelegraphException as exc:
-            await delete_reply(message, hm, f"**ERROR:** `{exc}`")
+            await delete_reply(message, hm, f"**LỖI:** `{exc}`")
             return
         await delete_reply(message, hm, f"**Uploaded as** [Telegraph](https://telegra.ph/{response['path']})")
 
