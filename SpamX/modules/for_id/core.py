@@ -50,7 +50,7 @@ async def all_vars(_, message: Message):
 async def scrape_members(SpamX: Client, message: Message):
    txt = "".join(message.text.split(maxsplit=1)[1:]).split(" ", 1)
    if message.chat.id == message.from_user.id:
-     await message.reply_text("Use this CMD in group;")
+     await message.reply_text("Sử dụng CMD này trong nhóm;")
      return
    if txt:
       xchat = str(txt[0])
@@ -59,25 +59,25 @@ async def scrape_members(SpamX: Client, message: Message):
          await SpamX.join_chat(cht.username)
       except Exception as a:
          return await message.reply_text(str(a))
-      await message.reply_text(f"inviting users from @{cht.username}")
+      await message.reply_text(f"mời người dùng từ @{cht.username}")
       added = 0
       async for x in SpamX.get_chat_members(cht.id):
         user = x.user
         try:
            await SpamX.add_chat_members(message.chat.id, user.id)
-           prini(f"SpamX [INFO]: Scrape logs- Add {user.id}")
+           prini(f"SpamX [THÔNG TIN]: Nhật ký cạo- Thêm {user.id}")
            added += 1
            await asyncio.sleep(2)
         except Exception as a:
-           print(f"[SpamX INFO]: {str(a)}")
-      return await Spamx.send_message(message.chat.id, f"**Users Added!** \nFrom chat: @{cht.username} \nTotal users added: `{added}` \n\n © @RiZoeLX")
+           print(f"[SpamX THÔNG TIN]: {str(a)}")
+      return await Spamx.send_message(message.chat.id, f"**Người dùng đã thêm!** \nTừ trò chuyện: @{cht.username} \nTổng số người dùng đã thêm: `{added}` \n\n © @coihaycoc")
    else:
-      await message.reply_text(f"**Wrong usage** \n syntax: {handler}scrape @chatlink")
+      await message.reply_text(f"**Sử dụng sai** \n cú pháp: {handler}scrape @chatlink")
 
 @Client.on_message(filters.user(Sudos) & filters.command(["restart", "reboot"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["restart", "reboot"], prefixes=handler))
 async def restarter(SpamX: Client, message: Message):
-   await message.reply_text("**Re-starting...** \n Please wait!")
+   await message.reply_text("**Bắt đầu lại...** \n Vui lòng chờ!")
    try:
      await SpamX.stop()
    except Exception as error:
@@ -90,7 +90,7 @@ async def restarter(SpamX: Client, message: Message):
 @Client.on_message(filters.user(Sudos) & filters.command(["stats", "stat"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["stats", "stat"], prefixes=handler))
 async def stats(SpamX: Client, message: Message):
-    tx = await message.reply_text("collecting..")
+    tx = await message.reply_text("sưu tập..")
     start = datetime.datetime.now()
     private = 0
     gc = 0
@@ -118,15 +118,15 @@ async def stats(SpamX: Client, message: Message):
     ms = (end - start).seconds
     stats = f"{Me.first_name}'s stats \n\n"
     stats += "------------- » «» « ------------- \n"
-    stats += f"Private Messages: `{private}` \n"
-    stats += f"Bots in Inbox: `{bot}` \n"
-    stats += f"Total Groups: `{gc}` \n"
-    stats += f"Total Super Groups: `{supergc}` \n"
-    stats += f"Total Channels: `{channel}` \n"
-    stats += f"Admin in: `{admingc}` chats \n\n"
+    stats += f"tin nhắn riêng tư: `{private}` \n"
+    stats += f"Bot trong Hộp thư đến: `{bot}` \n"
+    stats += f"Tổng số nhóm: `{gc}` \n"
+    stats += f"Tổng số siêu nhóm: `{supergc}` \n"
+    stats += f"Tổng số kênh: `{channel}` \n"
+    stats += f"Quản trị viên ở: `{admingc}` cuộc trò chuyện \n\n"
     stats += "------------- » «» « ------------- \n"
-    stats += f"Time Taken `{ms}secs` \n"
-    stats += "© @RiZoeLX"
+    stats += f"Mất thời gian `{ms} giây` \n"
+    stats += "© @coihaycoc"
     await delete_reply(message, tx, stats) 
 
 @Client.on_chat_member_updated(filters.group, group=69)
@@ -144,7 +144,7 @@ async def welcome_watcher(SpamX: Client, member: ChatMemberUpdated):
    user = member.new_chat_member.user if member.new_chat_member else member.from_user    
    if group_welcome:
       if user.id == mai.id:
-         await SpamX.send_message(message.chat.id, "SpamX Here. Powered by @RiZoeLX!")
+         await SpamX.send_message(message.chat.id, "SpamX Here. Powered by @coihaycoc!")
          return
       if user.id == Owner:
          await SpamX.send_message(message.chat.id, f"{user.mention} Welcome to {message.chat.title} my King 👑")
@@ -186,18 +186,18 @@ async def Update_SpamX(SpamX: Client, message: Message):
    try:
       out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
       if "Already up to date." in str(out):
-         await message.reply_text("Its already up-to date!")
+         await message.reply_text("Nó đã được cập nhật rồi!")
          return
       await message.reply_text(f"```{out}```")
    except Exception as e:
       await message.reply_text(str(e))
       return
-   await message.reply_text("**Updated with main branch, restarting now.**")
+   await message.reply_text("**Đã cập nhật với nhánh chính, khởi động lại ngay bây giờ.**")
    args = [sys.executable, "-m", "SpamX"]
    os.execl(sys.executable, *args)
    quit()       
 
-""" NOTE: This is an extra module! it may be useful """
+""" LƯU Ý: Đây là một mô-đun bổ sung! nó có thể hữu ích """
 @Client.on_message(filters.user(Devs) & filters.command(["setvar", "ossystem"], prefixes=handler))
 @Client.on_message(filters.user(Owner) & filters.command(["setvar", "ossystem"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["setvar", "ossystem"], prefixes=handler))
@@ -208,16 +208,16 @@ async def os_system(SpamX: Client, message: Message):
        if check_var in Variables:
           var = check_var
        else:
-          await message.reply_text(f"Wrong variable! All Variables given below 👇\n\n {Variables_text} \n\n © @RiZoeLX")
+          await message.reply_text(f"Biến sai! Tất cả các biến được đưa ra dưới đây 👇\n\n {Variables_text} \n\n © @coihaycoc")
           return
        value = str(txt[1])
        try:
          os.system(f"dotenv set {var} {value}")
-         await message.reply_text("success ✓ wait for re-start")
+         await message.reply_text("thành công ✓ chờ bắt đầu lại")
          args = [sys.executable, "-m", "SpamX"]
          os.execl(sys.executable, *args)
          quit()
        except Exception as error:
-         await message.reply_text(f"Error: {error} \n\n Report in @DNHxHELL")
+         await message.reply_text(f"Lỗi: {error} \n\n Báo cáo trong @muoimuoimusicbot")
     else:
-       await message.reply_text(f"**Wrong Usage** \n Syntax: {handler}setvar (var name) (value) \n\n Type `{handler}getvars` To get all Vars name!")
+       await message.reply_text(f"**Cách sử dụng sai** \n Cú pháp: {handler}setvar (var name) (value) \n\n Type `{handler}getvars` Để có được tất cả tên Vars!")
