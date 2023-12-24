@@ -10,7 +10,7 @@ __version__ = __version__
 
 ping_msg = PING_MSG if PING_MSG else "SpamX"
 pic = ALIVE_PIC if ALIVE_PIC else "https://telegra.ph//file/08445817174872b47cef8.jpg"
-amsg = ALIVE_MSG if ALIVE_MSG else "SpamX - by RiZoeLX"
+amsg = ALIVE_MSG if ALIVE_MSG else "SpamX - bởi @coihaycoc"
 
 try:
    sah = RiZoeL.get_users(OWNER_ID)
@@ -29,10 +29,10 @@ class Alive:
 ➠ **Python Version:** `{platform.python_version()}`
 ➠ **SpamX Version:** `{__version__}`
 ➠ **Pyrogram Version:** `{pyro_vr}`
-➠ **pyRiZoeLX Version:** `{pip_vr}`
-➠ **Channel:** @RiZoeLX
+➠ **py@coihaycoc Version:** `{pip_vr}`
+➠ **Channel:** @muoimuoimusicbot
 ━───────╮•╭───────━
-➠ **Source Code:** [•Repo•](https://github.com/RiZoeLX/SpamX)
+➠ **Source Code:** [•Repo•](https://github.com)
      """
 
 handler = HNDLR
