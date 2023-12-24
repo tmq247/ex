@@ -22,16 +22,16 @@ async def raid(SpamX: Client, e: Message):
       if len(Rizoel) == 2:
         counts = int(Rizoel[0])
         if not counts:
-          await e.reply_text(f"Gime raid Counts or use `{handler}.uraid` for Unlimited raid!")
+          await e.reply_text(f"Gime đột kích Đếm hoặc sử dụng `{handler}.uraid` cho cuộc đột kích không giới hạn!")
           return
         hm = Rizoel[1]
         if not hm:
-          await e.reply_text("you need to specify an user! Reply to any user or gime id/username")
+          await e.reply_text("bạn cần chỉ định một người dùng! Trả lời bất kỳ người dùng nào hoặc gime id/username")
           return
         try:
            user = await SpamX.get_users(Rizoel[1])
         except:
-           await e.reply_text("**Error:** User not found!")
+           await e.reply_text("**Lỗi:** Không tìm thấy người dùng!")
            return
       elif e.reply_to_message:
         counts = int(Rizoel[0])
@@ -44,18 +44,18 @@ async def raid(SpamX: Client, e: Message):
         return
 
       if int(user.id) == Owner:
-         await e.reply_text("This guy is Owner Of these Bots.")
+         await e.reply_text("Anh chàng này là chủ sở hữu của những Bot này.")
          return
       if int(user.id) in Sudos:
          if e.from_user.id != Owner:
-           await e.reply_text("This guy is a sudo users.")
+           await e.reply_text("Anh chàng này là người dùng sudo.")
            return
 
       await start_raid(SpamX, e, counts, user)
 
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"started Raid By User: {e.from_user.id} \n\n On User: {mention} \n Chat: {e.chat.id} \n Counts: {counts}")
+            await SpamX.send_message(LOGS_CHANNEL, f"đã bắt đầu Đột kích theo người dùng: {e.from_user.id} \n\n Trên người dùng: {mention} \n Trò chuyện: {e.chat.id} \n Counts: {counts}")
          except Exception as a:
             print(a)
             pass
@@ -72,19 +72,19 @@ async def rraid(SpamX: Client, e: Message):
       if DATABASE_URL:
           check = raid_db.check(user.id)
           if check:
-             await e.reply_text("User already in Raid list!")
+             await e.reply_text("Người dùng đã có trong danh sách Raid!")
              return
           raid_db.add_user(user.id)
       else:
           if int(user.id) in RUSERs:
-             await e.reply_text("User already in Raid list!")
+             await e.reply_text("Người dùng đã có trong danh sách Raid!")
              return
           RUSERs.append(user.id)
-      await e.reply_text(f"Reply Raid Activated On User {user.mention}")
+      await e.reply_text(f"Trả lời Raid được kích hoạt trên người dùng {user.mention}")
  
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"Activated Reply Raid By User: {e.from_user.id} \n\n On User: {mention} \n Chat: {e.chat.id}")
+            await SpamX.send_message(LOGS_CHANNEL, f"Kích hoạt trả lời đột kích bởi người dùng: {e.from_user.id} \n\n Trên người dùng: {mention} \n Trò chuyện: {e.chat.id}")
          except Exception as a:
              print(a)
              pass
@@ -99,19 +99,19 @@ async def draid(SpamX: Client, e: Message):
       if DATABASE_URL:
          check = raid_db.check(user.id)
          if not check:
-             await e.reply_text("User not in Raid list!")
+             await e.reply_text("Người dùng không có trong danh sách Raid!")
              return 
          raid_db.rm_user(user.id)
       else:
          if int(user.id) not in RUSERs:
-           await e.reply_text("User not in Raid list!")
+           await e.reply_text("Người dùng không có trong danh sách Raid!")
            return
          RUSERs.remove(user.id)
-      await e.reply_text(f"Reply Raid Activated Successfully On User {user.mention}")
+      await e.reply_text(f"Trả lời Raid được kích hoạt thành công trên người dùng {user.mention}")
       
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f" Deactivated Reply Raid By User: {e.from_user.id} \n\n User: {mention} \n Chat: {e.chat.id}")
+            await SpamX.send_message(LOGS_CHANNEL, f" Cuộc đột kích trả lời của người dùng đã bị vô hiệu hóa: {e.from_user.id} \n\n Người dùng: {mention} \n Trò chuyện: {e.chat.id}")
          except Exception as a:
              print(a)
              pass
@@ -133,7 +133,7 @@ async def watcher(_, msg: Message):
 @Client.on_message(filters.me & filters.command(["rlist", "raidlist"], prefixes=handler))
 async def raidlist(SpamX: Client, message: Message):
     global RUSERs
-    _reply = "**Raid users list - SpamX** \n\n"
+    _reply = "**Danh sách người dùng đột kích - SpamX** \n\n"
     if DATABASE_URL:
        data = raid_db.get_all_raiders()
        if len(data) > 0:
@@ -144,7 +144,7 @@ async def raidlist(SpamX: Client, message: Message):
              except:
                 _reply += f" × [{x.user_id}](tg://user?id={x.user_id}) \n"
        else:
-          await message.reply_text("Not yet!")
+          await message.reply_text("Chưa!")
           return
     else:
        if len(RUSERs) > 0:
@@ -155,6 +155,6 @@ async def raidlist(SpamX: Client, message: Message):
              except:
                 _reply += f" × [{x}](tg://user?id={x}) \n"
        else:
-          await message.reply_text("Not yet!")
+          await message.reply_text("Chưa!")
           return
     await message.reply_text(_reply)
