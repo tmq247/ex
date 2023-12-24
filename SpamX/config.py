@@ -11,11 +11,11 @@ if os.path.exists(".env"):
     load_dotenv(".env")
 
 # -------------CONFIGS--------------------
-API_ID = int(os.getenv("API_ID", "13958802"))
+API_ID = int(os.getenv("API_ID", ""))
 if not API_ID:
    print("SpamX [INFO]: Bạn chưa điền API_ID var!")
    sys.exit()
-API_HASH = os.getenv("API_HASH", "f6d2d3b04309e9660a0be5b2a6195a7c")
+API_HASH = os.getenv("API_HASH", "")
 if not API_HASH:
    print("SpamX [INFO]: Bạn chưa điền API_HASH var!")
    sys.exit()
@@ -56,7 +56,7 @@ if LOGS_CHANNEL:
 HNDLR = os.getenv("HNDLR", None)
 if not HNDLR:
    HNDLR = "."
-OWNER_ID = int(os.environ.get("OWNER_ID", "6337933296"))
+OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 if not OWNER_ID:
    print("SpamX [INFO]: Bạn chưa điền OWNER_ID var!")
    sys.exit()
