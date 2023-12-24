@@ -11,20 +11,20 @@ if os.path.exists(".env"):
     load_dotenv(".env")
 
 # -------------CONFIGS--------------------
-API_ID = int(os.getenv("API_ID", ""))
+API_ID = int(os.getenv("API_ID", "13958802"))
 if not API_ID:
-   print("SpamX [INFO]: You didn't fill API_ID var!")
+   print("SpamX [INFO]: Bạn chưa điền API_ID var!")
    sys.exit()
-API_HASH = os.getenv("API_HASH", "")
+API_HASH = os.getenv("API_HASH", "f6d2d3b04309e9660a0be5b2a6195a7c")
 if not API_HASH:
-   print("SpamX [INFO]: You didn't fill API_HASH var!")
+   print("SpamX [INFO]: Bạn chưa điền API_HASH var!")
    sys.exit()
 ALIVE_PIC = os.getenv("ALIVE_PIC", "")
 ALIVE_MSG = os.getenv("ALIVE_MSG", "")
 PING_MSG = os.getenv("PING_MSG", "")
 CLIENT = os.getenv("CLIENT", None)
 if not CLIENT:
-   print("SpamX [INFO]: You have to fill CLIENT var!")
+   print("SpamX [INFO]: Bạn phải điền vào CLIENT var!")
    sys.exit()
 CLIENT2 = os.getenv("CLIENT2", None)
 CLIENT3 = os.getenv("CLIENT3", None)
@@ -49,16 +49,16 @@ auto_re = os.getenv("AUTO_REACT_CHATS", None)
 LOGS_CHANNEL = os.getenv("LOGS_CHANNEL", None)
 if LOGS_CHANNEL:
    if check_logchannel(LOGS_CHANNEL):
-      print("SpamX [INFO]: You Can't Use That Chat As A Log Channel -!")
-      print("SpamX [INFO]: Change Logs Channel Id else Bot Could not be start")
+      print("SpamX [INFO]: Bạn không thể sử dụng cuộc trò chuyện đó làm kênh nhật ký -!")
+      print("SpamX [INFO]: Thay đổi nhật ký Id kênh khác Bot không thể khởi động")
       sys.exit()
     
 HNDLR = os.getenv("HNDLR", None)
 if not HNDLR:
    HNDLR = "."
-OWNER_ID = int(os.environ.get("OWNER_ID", None))
+OWNER_ID = int(os.environ.get("OWNER_ID", "6337933296"))
 if not OWNER_ID:
-   print("SpamX [INFO]: You didn't fill OWNER_ID var!")
+   print("SpamX [INFO]: Bạn chưa điền OWNER_ID var!")
    sys.exit()
 SUDO_USERS = os.getenv("SUDO_USERS", None)
 
