@@ -23,22 +23,22 @@ async def ban_user(SpamX: Client, message: Message):
    try:
       await SpamX.ban_chat_member(message.chat.id, user.id)
    except ChatAdminRequired:
-      await message.reply_text("I'm not admin or I don't have rights.")
+      await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
       return
    except RightForbidden:
-      await message.reply_text("I don't have enough rights to ban this user.")
+      await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
       return 
    except UserNotParticipant:
-      await message.reply_text("How can I ban a user who is not a part of this chat?")
+      await message.reply_text("Làm cách nào tôi có thể cấm người dùng không tham gia cuộc trò chuyện này?")
       return 
    except RPCError as eror:
       await message.reply_text(str(eror))
       return 
 
    if reason:
-      await message.reply_text(f"Banned {user.mention}! \nReason: {reason}")
+      await message.reply_text(f"Đã cấm {user.mention}! \nLý do: {reason}")
    else:
-      await message.reply_text(f"Banned {user.mention}!")
+      await message.reply_text(f"Đã cấm {user.mention}!")
 
 
 @Client.on_message(filters.group & filters.user(Sudos) & filters.command(["unban"], prefixes=handler))
@@ -48,15 +48,15 @@ async def unban_user(SpamX: Client, message: Message):
    try:
       await SpamX.unban_chat_member(message.chat.id, user.id)
    except ChatAdminRequired:
-      await message.reply_text("I'm not admin or I don't have rights.")
+      await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
       return
    except RightForbidden:
-      await message.reply_text("I don't have enough rights to ban this user.")
+      await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
       return  
    except RPCError as eror:
       await message.reply_text(str(eror))
       return 
-   await message.reply_text(f"Unbanned {user.mention}! \nReason: {reason}")
+   await message.reply_text(f"Bỏ cấm {user.mention}! \nLý do: {reason}")
 
 @Client.on_message(filters.group & filters.user(Sudos) & filters.command(["promote"], prefixes=handler))
 @Client.on_message(filters.group & filters.me & filters.command(["promote"], prefixes=handler))
@@ -76,11 +76,11 @@ async def promote_user(SpamX: Client, message: Message):
           )
      await message.reply_text(f"Promoted {user.mention}!")
    except ChatAdminRequired:
-     await message.reply_text("I'm not admin or I don't have rights.")
+     await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
    except RightForbidden:
-     await message.reply_text("I don't have enough rights to ban this user.")
+     await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
    except UserNotParticipant:
-     await message.reply_text("How can I promote a user who is not a part of this chat?")
+     await message.reply_text("Làm cách nào tôi có thể thăng chức cho người dùng không tham gia cuộc trò chuyện này?")
    except RPCError as eror:
      await message.reply_text(str(eror))
 
@@ -102,13 +102,13 @@ async def fullpromote(SpamX: Client, message: Message):
             can_pin_messages=True,
             can_promote_members=True,
             )
-     await message.reply_text(f"Full Promoted {user.mention}!")
+     await message.reply_text(f"Thăng chức full {user.mention}!")
    except ChatAdminRequired:
-     await message.reply_text("I'm not admin or I don't have rights.")
+     await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
    except RightForbidden:
-     await message.reply_text("I don't have enough rights to ban this user.")
+     await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
    except UserNotParticipant:
-     await message.reply_text("How can I promote a user who is not a part of this chat?")
+     await message.reply_text("Làm cách nào tôi có thể thăng chức người dùng không tham gia cuộc trò chuyện này?")
    except RPCError as eror:
      await message.reply_text(str(eror))
 
@@ -131,11 +131,11 @@ async def demote_user(SpamX: Client, message: Message):
             )
      await message.reply_text(f"Demote {user.mention}!")
    except ChatAdminRequired:
-     await message.reply_text("I'm not admin or I don't have rights.")
+     await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
    except RightForbidden:
-     await message.reply_text("I don't have enough rights to ban this user.")
+     await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
    except UserNotParticipant:
-     await message.reply_text("How can I promote a user who is not a part of this chat?")
+     await message.reply_text("Làm cách nào tôi có thể hạ chức cho người dùng không tham gia cuộc trò chuyện này?")
    except RPCError as eror:
      await message.reply_text(str(eror))
 
@@ -144,17 +144,17 @@ async def demote_user(SpamX: Client, message: Message):
 async def pin_message(SpamX: Client, message: Message): 
    reply = message.reply_to_message
    if not reply:
-     await message.reply_text("Reply to message!")
+     await message.reply_text("Trả lời tin nhắn!")
      return
    try:
      await SpamX.pin_chat_message(message.chat.id, reply.id)
      await message.reply_text("Pinned 📌")
    except ChatAdminRequired:
-     await message.reply_text("I'm not admin or I don't have rights.")
+     await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
    except RightForbidden:
-     await message.reply_text("I don't have enough rights to ban this user.")
+     await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
    except UserNotParticipant:
-     await message.reply_text("How can I promote a user who is not a part of this chat?")
+     await message.reply_text("Làm cách nào tôi có thể thăng chức người dùng không tham gia cuộc trò chuyện này?")
    except RPCError as eror:
      await message.reply_text(str(eror))
 
@@ -163,17 +163,17 @@ async def pin_message(SpamX: Client, message: Message):
 async def unpin_message(SpamX: Client, message: Message):
    reply = message.reply_to_message
    if not reply:
-     await message.reply_text("Reply to message!")
+     await message.reply_text("Trả lời tin nhắn!")
      return
    try:
      await SpamX.unpin_chat_message(message.chat.id, reply.id)
      await message.reply_text("Unpinned!")
    except ChatAdminRequired:
-     await message.reply_text("I'm not admin or I don't have rights.")
+     await message.reply_text("Tôi không phải là quản trị viên hoặc tôi không có quyền.")
    except RightForbidden:
-     await message.reply_text("I don't have enough rights to ban this user.")
+     await message.reply_text("Tôi không có đủ quyền để cấm người dùng này.")
    except UserNotParticipant:
-     await message.reply_text("How can I promote a user who is not a part of this chat?")
+     await message.reply_text("Làm cách nào tôi có thể quảng bá cho người dùng không tham gia cuộc trò chuyện này?")
    except RPCError as eror:
      await message.reply_text(str(eror))
 
