@@ -46,7 +46,7 @@ async def SpamX_(SpamX: Client, message: Message):
     user = message.from_user
     Mai = await SpamX.get_me()
     chat = message.chat
-    info = await message.reply_text("processing......")
+    info = await message.reply_text("đang xử lý......")
     spamx_reply = "**__SpamX by RiZoeLX;__** \n\n"
     spamx_reply += "<=======================> \n"
 
@@ -106,8 +106,8 @@ async def SpamX_(SpamX: Client, message: Message):
        spamx_reply += f"**Total Sudos:** `{users_db.sudo_count()}` \n"
        spamx_reply += f"**Total Gbanned users:** `{gban_db.gban_count()}` \n"
     spamx_reply += "<=======================> \n\n"
-    spamx_reply += "**Source Code:** [GitHub 🐈‍⬛](https://github.com/RiZoeLX/SpamX) \n\n"
-    spamx_reply += "**© @RiZoeLX** || Support: @DNHxHELL"
+    spamx_reply += "**Source Code:** [GitHub 🐈‍⬛](https://github.com) \n\n"
+    spamx_reply += "**© @coihaycoc** || Support: @muoimuoimusicbotL"
     
     try:
        await info.edit_text(spamx_reply, disable_web_page_preview=True)
