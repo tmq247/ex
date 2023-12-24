@@ -30,7 +30,7 @@ async def gban_(SpamX: Client, message: Message):
        gban_db.gban(user.id, reason)
        await start_gban(SpamX, message, user, reason)       
     else:
-       await message.reply_text("Error! filled `DATABASE_URL`")
+       await message.reply_text("Lỗi! điền `DATABASE_URL`")
 
 
 @Client.on_message(filters.user(Owner) & filters.command(["ungban", "unglobalban"], prefixes=handler))
@@ -46,7 +46,7 @@ async def ungban_(SpamX: Client, message: Message):
        gban_db.ungban(user.id)
        await start_ungban(SpamX, message, user)
     else:
-       await message.reply_text("Error! filled `DATABASE_URL`")
+       await message.reply_text("Lỗi! điền `DATABASE_URL`")
        return
 
 @Client.on_message(filters.new_chat_members)
@@ -57,12 +57,12 @@ async def gban_watcher(SpamX: Client, message: Message):
       check = gban_db.check(user.id)
       if check:
          gban_msg = f"""
-**Alert ⚠️**
+**Báo động ⚠️**
 
-Gbanned user joined!
+Người dùng Gbanned đã tham gia!
 
-user: {user.mention}
-reason: {check.reason}
+người dùng: {user.mention}
+lý do: {check.reason}
          """
          try:
            await SpamX.ban_chat_member(chat.id, user.id)
@@ -73,7 +73,7 @@ reason: {check.reason}
 @Client.on_message(filters.user(Sudos) & filters.command(["gbanlist", "glist", "gbans"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["gbanlist", "glist", "gbans"], prefixes=handler))
 async def glist(SpamX: Client, message: Message):
-    _reply = "**Gbanned users list - SpamX** \n\n"
+    _reply = "**Danh sách người dùng bị cấm - SpamX** \n\n"
     if DATABASE_URL:
        data = gban_db.get_all_gbanned()
        if len(data) > 0:
@@ -86,9 +86,9 @@ async def glist(SpamX: Client, message: Message):
           await message.reply_text(_reply)
           return
        else:
-          await message.reply_text("Not yet!")
+          await message.reply_text("Chưa!")
           return
-    await message.reply_text("Ah. You didn't filled `DATABASE_URL`")
+    await message.reply_text("Ah. Bạn chưa điền `DATABASE_URL`")
 
 @Client.on_message(filters.user(Owner) & filters.command(["gpromo", "gpromote"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["gpromo", "gpromote"], prefixes=handler))
