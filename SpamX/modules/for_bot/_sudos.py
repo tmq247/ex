@@ -22,19 +22,19 @@ async def rmsudo(SpamX: Client, message: Message):
     if DATABASE_URL:
        check = users_db.check_sudo(user.id)
        if check:
-          await message.reply_text(f"User {user.mention} already in sudo list!")
+          await message.reply_text(f"Người dùng {user.mention} đã có trong danh sách sudo!")
           return
        users_db.addsudo(user.id)
-       await message.reply_text(f"User {user.mention} successfully promoted as Sudo! \n\nWait for re-start ✓")
+       await message.reply_text(f"Người dùng {user.mention} được thăng cấp thành công với tên Sudo! \n\nĐợi khởi động lại ✓")
        args = [sys.executable, "-m", "SpamX"]
        os.execl(sys.executable, *args)
        quit()
     else:
        if int(user.id) in Sudos:
-          await message.reply_text(f"User {user.mention} already in sudo list!")
+          await message.reply_text(f"Người dùng {user.mention} đã có trong danh sách sudo!")
           return
        Sudos.append(user.id)
-       await message.reply_text(f"User {user.mention} successfully promoted as Sudo! \n\n**NOTE:**You didn't filled `DATABASE_URL`")
+       await message.reply_text(f"Người dùng {user.mention} được thăng cấp thành công với tên Sudo! \n\n**LƯU Ý:**Bạn đã không điền `DATABASE_URL`")
 
 @Client.on_message(filters.user(Owner) & filters.command(["rmsudo"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["rmsudo"], prefixes=handler))
@@ -53,21 +53,21 @@ async def addsudo(SpamX: Client, message: Message):
           await message.reply_text(f"User {user.mention} not in sudo list!")
           return
        users_db.rmsudo(user.id)
-       await message.reply_text(f"User {user.mention} successfully removed from Sudo! \n\nWait for re-start ✓")
+       await message.reply_text(f"Người dùng {user.mention} đã xóa thành công khỏi Sudo! \n\nĐợi khởi động lại ✓")
        args = [sys.executable, "-m", "SpamX"]
        os.execl(sys.executable, *args)
        quit()
     else:
        if int(user.id) not in Sudos:
-          await message.reply_text(f"User {user.mention} not in sudo list!")
+          await message.reply_text(f"Người dùng {user.mention} không có trong danh sách sudo!")
           return
        Sudos.remove(user.id)
-       await message.reply_text(f"User {user.mention} successfully removed from Sudo! \n\n**NOTE:** You didn't filled `DATABASE_URL`")
+       await message.reply_text(f"Người dùng {user.mention} đã xóa thành công khỏi Sudo! \n\n**LƯU Ý:** Bạn đã không điền `DATABASE_URL`")
 
 @Client.on_message(filters.user(Sudos) & filters.command(["sudos", "sudolist"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["sudos", "sudolist"], prefixes=handler))
 async def sudolist(SpamX: Client, message: Message):
-    sudo_reply = "**Sudo users list - SpamX** \n\n"
+    sudo_reply = "**Danh sách người dùng Sudo - SpamX** \n\n"
     if DATABASE_URL:
        data = users_db.get_all_sudos()
        for x in data:
