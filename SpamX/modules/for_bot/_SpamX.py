@@ -55,7 +55,7 @@ r = telegraph.create_account(short_name="telegram")
 auth_url = r["auth_url"]
 
 def get_text(message: Message) -> [None, str]:
-    """Extract Text From Commands"""
+    """Trích xuất văn bản từ lệnh"""
     text_to_return = message.text
     if message.text is None:
         return None
@@ -72,14 +72,14 @@ def get_text(message: Message) -> [None, str]:
 async def _telegraph(SpamX: Client, message: Message):
     hm = await message.reply_text("`Processing . . .`")
     if not message.reply_to_message:
-        await tex.edit("**Reply to an Image or text.**")
+        await tex.edit("**Trả lời một hình ảnh hoặc văn bản.**")
         return
     if message.reply_to_message.media:
         doc = await message.reply_to_message.download()
         try:
             media_url = upload_file(doc)
         except exceptions.TelegraphException as exc:
-            await delete_reply(message, hm, f"**ERROR:** `{exc}`")
+            await delete_reply(message, hm, f"**LỖI:** `{exc}`")
             os.remove(doc)
             return
         await delete_reply(message, hm, f"**Uploaded on ** [Telegraph](https://telegra.ph/{media_url[0]})")
@@ -91,7 +91,7 @@ async def _telegraph(SpamX: Client, message: Message):
         try:
             response = telegraph.create_page(_title, html_content=_text)
         except exceptions.TelegraphException as exc:
-            await delete_reply(message, hm, f"**ERROR:** `{exc}`")
+            await delete_reply(message, hm, f"**LỖI:** `{exc}`")
             return
         await delete_reply(message, hm, f"**Uploaded as** [Telegraph](https://telegra.ph/{response['path']})")
 
