@@ -17,14 +17,14 @@ async def uspam(SpamX: Client, e: Message):
     global unlimited
     unlimited = True
     if int(e.chat.id) in res_grps:
-       await e.reply_text("**Sorry !! i Can't Spam Here.**")
+       await e.reply_text("**Lấy làm tiếc!! tôi không thể spam ở đây.**")
        return
     msg = str(e.text[6:]) 
     if not msg:
        await e.reply("Gime Spam message bruh!")
        return
     if re.search(res_devs.lower(), msg.lower()):
-       await e.reply("**Sorry !!** I can't Spam On @RiZoeLX's owner")
+       await e.reply("**Xin lỗi!!** Tôi không thể spam chủ sở hữu của @coihaycoc")
        return
 
     try:
@@ -36,7 +36,7 @@ async def uspam(SpamX: Client, e: Message):
            
     if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"started Unlimited Spam By User: {e.from_user.id} \n\n Chat: {e.chat.id} \n Spam Message: {msg}")
+            await SpamX.send_message(LOGS_CHANNEL, f"đã bắt đầu Thư rác không giới hạn theo người dùng: {e.from_user.id} \n\n Trò chuyện: {e.chat.id} \n Tin nhắn rác: {msg}")
          except Exception as a:
              print(a)
              pass
@@ -61,7 +61,7 @@ async def uraid(SpamX: Client, e: Message):
 
       if LOGS_CHANNEL:
          try:
-            await SpamX.send_message(LOGS_CHANNEL, f"started Raid By User: {e.from_user.id} \n\n On User: {mention} \n Chat: {e.chat.id}")
+            await SpamX.send_message(LOGS_CHANNEL, f"đã bắt đầu Đột kích theo người dùng: {e.from_user.id} \n\n Trên người dùng: {mention} \n Trò chuyện: {e.chat.id}")
          except Exception as a:
              print(a)
              pass
@@ -74,7 +74,7 @@ async def abuse(SpamX: Client, e: Message):
      if sex:
           counts = int(sex)
           if int(e.chat.id) in res_grps:
-              return await e.reply_text("**Sorry !! i Can't Spam Here.**")
+              return await e.reply_text("**Lấy làm tiếc!! tôi không thể spam ở đây.**")
           for _ in range(counts):
               msg = choice(one_word)
               await SpamX.send_message(e.chat.id, msg)
@@ -83,7 +83,7 @@ async def abuse(SpamX: Client, e: Message):
           global unlimited
           unlimited = True
           if int(e.chat.id) in res_grps:
-               return await e.reply_text("**Sorry !! i Can't Spam Here.**")
+               return await e.reply_text("**Lấy làm tiếc!! tôi không thể spam ở đây.**")
           try:
              while unlimited == True:
                  msg = choice(one_word)
@@ -98,7 +98,7 @@ async def abuse(SpamX: Client, e: Message):
 async def stop(_, e: Message):
        global unlimited
        unlimited = False
-       await e.reply_text("Stopped Unlimited Spam/Raid/abuse -;")
+       await e.reply_text("Đã dừng không giới hạn Spam/Raid/abuse -;")
 
 @Client.on_message(filters.user(Sudos) & filters.command(["echo", "repeat"], prefixes=handler))
 @Client.on_message(filters.me & filters.command(["echo", "repeat"], prefixes=handler))
@@ -109,7 +109,7 @@ async def echo_(SpamX: Client, message: Message):
     elif txt:
       msg = str(txt)
     else:
-        await message.reply_text(f"**Wrong Usage!** \n\n Syntax: {handler}echo (message or reply to message)")
+        await message.reply_text(f"**Cách sử dụng sai!** \n\n Cú pháp: {handler}echo (nhắn tin hoặc trả lời tin nhắn)")
         return
 
     try:
