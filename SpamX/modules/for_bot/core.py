@@ -74,7 +74,7 @@ async def welcome_watcher(SpamX: Client, member: ChatMemberUpdated):
    user = member.new_chat_member.user if member.new_chat_member else member.from_user    
    if group_welcome:
       if user.id == mai.id:
-         await SpamX.send_message(message.chat.id, "SpamX Here. Powered by @RiZoeLX!")
+         await SpamX.send_message(message.chat.id, "SpamX Here. Powered by @coihaycoc!")
          return
       if user.id == Owner:
          await SpamX.send_message(message.chat.id, f"{user.mention} Welcome to {message.chat.title} my King 👑")
@@ -104,13 +104,13 @@ async def Update_SpamX(SpamX: Client, message: Message):
    try:
       out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
       if "Already up to date." in str(out):
-         await message.reply_text("Its already up-to date!")
+         await message.reply_text("Nó đã được cập nhật rồi!")
          return
       await message.reply_text(f"```{out}```")
    except Exception as e:
       await message.reply_text(str(e))
       return
-   await message.reply_text("**Updated with main branch, restarting now.**")
+   await message.reply_text("**Đã cập nhật với nhánh chính, khởi động lại ngay bây giờ.**")
    args = [sys.executable, "-m", "SpamX"]
    os.execl(sys.executable, *args)
    quit()
@@ -126,16 +126,16 @@ async def os_system(SpamX: Client, message: Message):
        if check_var in Variables:
           var = check_var
        else:
-          await message.reply_text(f"Wrong variable! All Variables given below 👇\n\n {Variables_text} \n\n © @RiZoeLX")
+          await message.reply_text(f"Biến sai! Tất cả các biến được đưa ra dưới đây 👇\n\n {Variables_text} \n\n © @coihaycoc")
           return
        value = str(txt[1])
        try:
          os.system(f"dotenv set {var} {value}")
-         await message.reply_text("success ✓ wait for re-start")
+         await message.reply_text("thành công ✓ chờ bắt đầu lại")
          args = [sys.executable, "-m", "SpamX"]
          os.execl(sys.executable, *args)
          quit()
        except Exception as error:
-         await message.reply_text(f"Error: {error} \n\n Report in @DNHxHELL")
+         await message.reply_text(f"Lỗi: {error} \n\n Báo cáo trong @muoimuoimusicbot")
     else:
-       await message.reply_text(f"**Wrong Usage** \n Syntax: {handler}setvar (var name) (value) \n\n Type `{handler}getvars` To get all Vars name!")
+       await message.reply_text(f"**Cách sử dụng sai** \n Cú pháp: {handler}setvar (var name) (value) \n\n Type `{handler}getvars` Để có được tất cả tên Vars!")
