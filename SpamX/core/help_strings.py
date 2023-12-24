@@ -6,25 +6,25 @@ if not hndlr:
   hndlr = "."
 
 help_text = f"""
-**Help menu of SpamX!**
+**Menu trợ giúp của SpamX!**
 
-Functions/Modules available ⬇️
+Chức năng/Mô-đun có sẵn ⬇️
 
 => `spam` , `raid` , `owner` , `directmessage` , `admin` , `core` , `sudos` , `global` , `profile` , `joinleave` , `info`
 
-Type `{hndlr}help` (Module name) | Bot'll give info/usage of
-that module.
+Kiểu `{hndlr}help` (Tên mô-đun) | Bot sẽ cung cấp thông tin/cách sử dụng
+mô-đun đó.
 
-Example: `{hndlr}help core`
+Ví dụ: `{hndlr}help core`
 """
 
 spam_text = f"""
-**Module name: Spam**
+**Tên mô-đun: Spam**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}spam [counts] [message] 
-•) {hndlr}delayspam [delay in secs.] [Counts] [message]
+•) {hndlr}delayspam [độ trễ tính bằng giây.] [Counts] [message]
 •) {hndlr}pornspam [counts]
 •) {hndlr}hange [counts]
 •) {hndlr}uspam [message]
@@ -32,9 +32,9 @@ Available commands and there Usage ⬇️
 """
 
 raid_text = f"""
-**Module name: Raid**
+**Tên mô-đun: Raid**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}raid [counts] [username or reply to user]
 •) {hndlr}uraid [Username or reply to user]
@@ -43,9 +43,9 @@ Available commands and there Usage ⬇️
 """
 
 dm_text = f"""
-**Module name: Direct Message**
+**Tên mô-đun: Direct Message**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}dm [username or reply to user] [message]
 •) {hndlr}dmspam [user] [counts] [message]
@@ -53,9 +53,9 @@ Available commands and there Usage ⬇️
 """
 
 admin_text = f"""
-**Module name: Admin**
+**Tên mô-đun: Admin**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}ban [user]
 •) {hndlr}unban [user]
@@ -67,9 +67,9 @@ Available commands and there Usage ⬇️
 """
 
 core_text = f"""
-**Module name: Core**
+**Tên mô-đun: Core**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}report [user] [R7 ban code] [telegraph link as proof]
 •) {hndlr}stats
@@ -82,7 +82,7 @@ Available commands and there Usage ⬇️
 sudos_text = f"""
 **Module name: Sudos**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}addsudo [user] (Fill DATABASE_URL for smooth use)
 •) {hndlr}rmsudo [user] (Fill DATABASE_URL for smooth use)
@@ -90,9 +90,9 @@ Available commands and there Usage ⬇️
 """
 
 global_text = f"""
-**Module name: Global**
+**Tên mô-đun: Global**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}gban [user] (DATABASE_URL required in this CMD)
 •) {hndlr}ungban [user] (DATABASE_URL required in this CMD)
@@ -102,9 +102,9 @@ Available commands and there Usage ⬇️
 """
 
 profile_text = f"""
-**Module name: Profile**
+**Tên mô-đun: Profile**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}setpic [reply to Media]
 •) {hndlr}setname [First name] [last name (optionsi) ]
@@ -114,9 +114,9 @@ Available commands and there Usage ⬇️
 """
 
 owner_text = f"""
-**Module name: Owner stuff**
+**Tên mô-đun: Owner stuff**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}eval [code]
 •) {hndlr}broadcast [message]
@@ -126,18 +126,18 @@ Available commands and there Usage ⬇️
 """
 
 joinleave_text = f"""
-**Module name: Join leave**
+**Tên mô-đun: Join leave**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}join [group username]
 •) {hndlr}leave [group username or ID]
 """
 
 info_text = f"""
-**Module name: Info**
+**Tên mô-đun: Info**
 
-Available commands and there Usage ⬇️
+Các lệnh có sẵn và cách dùng ⬇️
 
 •) {hndlr}SpamX
 •) {hndlr}info [User]
