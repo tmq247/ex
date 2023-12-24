@@ -203,6 +203,6 @@ async def _purges(SpamX: Client, message: Message):
                 chat_id=message.chat.id, message_ids=message_ids, revoke=True
             )
 
-    await status_message.edit_text(f"deleted {count_del_etion_s} messages")
+    await status_message.edit_text(f"đã xóa {count_del_etion_s} tin nhắn")
     await asyncio.sleep(5)
     await status_message.delete()
