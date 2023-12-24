@@ -3,27 +3,27 @@
 from pyrogram import Client
 #import tgcrypto
 
-ID = int(input(" \n Send Api Id To Generate String Sessions: "))
-HASH = str(input(" \n Send Api Hash To Generate String Sessions: "))
+ID = int(input(" \n Gửi Api Id để tạo phiên chuỗi: "))
+HASH = str(input(" \n Gửi Api Hash để tạo phiên chuỗi: "))
 
 try:
-     number_to_add = int(input(" \n Enter number of accounts you want to generate string:"))
-     whom = input(" \n Enter Your Username or User id so, Client can forward all sessions to you else press enter: ")
+     number_to_add = int(input(" \n Nhập số lượng tài khoản bạn muốn tạo chuỗi:"))
+     whom = input(" \n Nhập Tên người dùng hoặc Id người dùng của bạn để Khách hàng có thể chuyển tiếp tất cả các phiên cho bạn nếu không nhấn enter: ")
      for i in range(number_to_add):
-            RiZoeL = Client(name="RiZoeL", api_id=ID, api_hash=HASH, in_memory=True)
+            RiZoeL = Client(name="Còi", api_id=ID, api_hash=HASH, in_memory=True)
             RiZoeL.start()
             s = RiZoeL.export_session_string()
             sess = str(s)
             if whom:
                 id = RiZoeL.get_users(whom).id
-                RiZoeL.send_message(id, f"**Pyrogram String Session** \n\n `{sess}` \n\n © @RiZoeLX")
+                RiZoeL.send_message(id, f"**Pyrogram String Session** \n\n `{sess}` \n\n © @coihaycoc")
             else:
-                RiZoeL.send_message("me", f"**Pyrogram String Session** \n\n `{sess}` \n\n © @RiZoeLX")
+                RiZoeL.send_message("me", f"**Pyrogram String Session** \n\n `{sess}` \n\n © @coihaycoc")
        
      if whom:
-           print(f"All Session has been sent to {whom}")
+           print(f"Tất cả phiên đã được gửi đến {whom}")
      else:
-         print("All Sessions has been sent to saved message")
+         print("Tất cả các phiên đã được gửi đến tin nhắn đã lưu")
          
 except Exception as a:
    print(a)    
